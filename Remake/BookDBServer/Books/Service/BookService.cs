@@ -12,7 +12,7 @@ namespace BookDB.Books.Service
 
         public BookModel GetBook(int Id)
         {
-            return (BookModel)dataContext.Books.Where<BookModel>(Book => Book.Id == Id);
+            return dataContext.Books.Where<BookModel>(Book => Book.Id == Id).FirstOrDefault();
         }
 
         public List<BookModel> GetAllBooks()
@@ -34,12 +34,20 @@ namespace BookDB.Books.Service
             return bookModel;
         }
 
+        public BookModel UpdateBookById(int Id)
+        {
+            BookModel? foundBook = dataContext.Books.FirstOrDefault(book => book.Id == Id);
+            dataContext.Books.Update(foundBook);
+            dataContext.SaveChanges();
+            return foundBook;
+        }
+
         public void DeleteBook(BookModel bookModel)
         {
             dataContext.Books.Remove(bookModel);
         }
 
-        public void DeleteBook(int Id)
+        public void DeleteBookById(int Id)
         {
             BookModel? foundBook = dataContext.Books.FirstOrDefault(book => book.Id == Id);
             if(foundBook != null)

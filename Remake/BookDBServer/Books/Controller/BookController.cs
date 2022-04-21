@@ -15,22 +15,16 @@ namespace BookDB.Books
             this.bookService = bookService;
         }
 
-        [HttpGet("/")]
-        public ActionResult<String> GetMessage()
-        {
-            return "Hello";
-        }
-
         [HttpGet("/books")]
         public ActionResult<IEnumerable<BookModel>> GetBooks()
         {
             return bookService.GetAllBooks();
         }
 
-        [HttpGet("/{id}")]
-        public ActionResult<BookModel> GetBook(int id)
+        [HttpGet("/{Id}")]
+        public ActionResult<BookModel> GetBook(int Id)
         {
-            return bookService.GetBook(id);
+            return bookService.GetBook(Id);
         }
 
         [HttpPost("/create")]
@@ -45,10 +39,16 @@ namespace BookDB.Books
             return bookService.UpdateBook(bookModel);
         }
 
-        [HttpPost("/delete")]
-        public ActionResult DeleteBook(BookModel bookModel)
+        [HttpPost("/update/{Id}")]
+        public ActionResult<BookModel> UpdateBookById(int Id)
         {
-            bookService.DeleteBook(bookModel);
+            return bookService.UpdateBookById(Id);
+        }
+
+        [HttpPost("/delete/{Id}")]
+        public ActionResult DeleteBookById(int Id)
+        {
+            bookService.DeleteBookById(Id);
             return Ok();
         }
     }
