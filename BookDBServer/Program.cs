@@ -18,6 +18,16 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddScoped<BookService>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("DevCorsPolicy",
+        builder => builder
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .SetIsOriginAllowed((host) => true));
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -32,5 +42,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("DevCorsPolicy");
 
 app.Run();

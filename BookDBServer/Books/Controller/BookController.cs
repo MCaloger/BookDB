@@ -4,8 +4,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BookDB.Books
 {
-    [Route("api/v1/book")]
+    [Route("api/v1/[controller]")]
     [ApiController]
+    
     public class BookController : ControllerBase
     {
         private readonly BookService bookService;
@@ -15,37 +16,37 @@ namespace BookDB.Books
             this.bookService = bookService;
         }
 
-        [HttpGet("/books")]
+        [HttpGet("books")]
         public ActionResult<IEnumerable<BookModel>> GetBooks()
         {
             return bookService.GetAllBooks();
         }
 
-        [HttpGet("/{Id}")]
+        [HttpGet("{Id}")]
         public ActionResult<BookModel> GetBook(int Id)
         {
             return bookService.GetBook(Id);
         }
 
-        [HttpPost("/create")]
+        [HttpPost("create")]
         public ActionResult<BookModel> CreateBook(BookModel bookModel)
         {
             return bookService.CreateBook(bookModel);
         }
 
-        [HttpPost("/update")]
+        [HttpPost("update")]
         public ActionResult<BookModel> UpdateBook(BookModel bookModel)
         {
             return bookService.UpdateBook(bookModel);
         }
 
-        [HttpPost("/update/{Id}")]
+        [HttpPost("update/{Id}")]
         public ActionResult<BookModel> UpdateBookById(int Id)
         {
             return bookService.UpdateBookById(Id);
         }
 
-        [HttpPost("/delete/{Id}")]
+        [HttpPost("delete/{Id}")]
         public ActionResult DeleteBookById(int Id)
         {
             bookService.DeleteBookById(Id);

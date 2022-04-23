@@ -1,0 +1,7 @@
+<h1>Book List</h1>
+<div class="book-list" *ngFor="let book of books | async">
+	<div class="book-item">
+		<span class="book-item-header">Title: </span>
+		<span class="book-item-value">{{ book.title }}</span>
+	</div>
+</div>
