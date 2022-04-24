@@ -14,4 +14,8 @@ export class BookService {
   GetBooks() {
     return this.http.get<Book[]>("https://localhost:7247/api/v1/book/books");
   }
+
+  GetBook(id: number) {
+    return this.http.get<Book[]>(`https://localhost:7247/api/v1/book/${id}`);
+  }
 }
