@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookDBServer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220421022944_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220426023458_AuthorAddition")]
+    partial class AuthorAddition
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,11 +26,14 @@ namespace BookDBServer.Migrations
 
             modelBuilder.Entity("BookDB.Books.BookModel", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int?>("Id"), 1L, 1);
+
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("CurrentPages")
                         .HasColumnType("int");

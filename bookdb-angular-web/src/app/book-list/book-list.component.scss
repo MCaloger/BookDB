@@ -1,9 +1,16 @@
 .book-item {
   padding: 10px;
-  border: 1px solid black;
-  margin: 10px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-.book-item-header {
-  font-weight: bold;
+.book-item-title {
+    font-size: 20px;
+	font-weight: bold;
+    padding-bottom: 5px;
+}
+
+.book-item-author {
+	color: grey;
 }

@@ -7,6 +7,7 @@ namespace BookDB.Books
         [Key]
         public int? Id { get; set; }
         public string Title { get; set; }
+        public string? Author { get; set; }
         public int? ImageId { get; set; }
         public int? MaxPages { get; set; }
         public int? CurrentPages { get; set; }
@@ -15,18 +16,20 @@ namespace BookDB.Books
         {
         }
 
-        public BookModel(int id, string title, int? imageId, int? maxPages, int? currentPages)
+        public BookModel(int id, string title, string? author, int? imageId, int? maxPages, int? currentPages)
         {
             Id = id;
             Title = title;
+            Author = author;
             ImageId = imageId;
             MaxPages = maxPages;
             CurrentPages = currentPages;
         }
 
-        public BookModel(string title, int? imageId, int? maxPages, int? currentPages)
+        public BookModel(string title, string? author, int? imageId, int? maxPages, int? currentPages)
         {
             Title = title;
+            Author = author;
             ImageId = imageId;
             MaxPages = maxPages;
             CurrentPages = currentPages;

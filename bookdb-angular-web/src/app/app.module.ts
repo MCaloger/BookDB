@@ -9,6 +9,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AddBookFormComponent } from './add-book-form/add-book-form.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatDividerModule } from '@angular/material/divider'
+import { MatTabsModule } from '@angular/material/tabs';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +26,10 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MatDividerModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

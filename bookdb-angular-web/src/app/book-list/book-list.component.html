@@ -1,7 +1,18 @@
 <h1>Book List</h1>
 <div class="book-list" *ngFor="let book of books | async">
 	<div class="book-item">
-		<span class="book-item-header">Title: </span>
-		<span class="book-item-value">{{ book.title }}</span>
+		
+		<div>
+			<div class="book-item-title">{{ book.title }}</div>
+			<span class="book-item-author">By {{ book.author }}</span>
+		</div>
+		<div>
+			<span class="book-item-pages">{{ book.currentPages }} / {{ book.maxPages }} completed.</span>
+		</div>
+		<div>
+			<a routerLink="/book/edit/{{ book.id }}"><button>Edit</button></a>
+			<a routerLink="/book/delete/{{ book.id }}"><button>Delete</button></a>
+		</div>
 	</div>
+	<mat-divider></mat-divider>
 </div>
