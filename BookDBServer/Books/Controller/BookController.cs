@@ -31,22 +31,23 @@ namespace BookDB.Books
         [HttpPost("create")]
         public ActionResult<BookModel> CreateBook(BookModel bookModel)
         {
+            Console.WriteLine(bookModel);
             return bookService.CreateBook(bookModel);
         }
 
-        [HttpPost("update")]
+        [HttpPut("update")]
         public ActionResult<BookModel> UpdateBook(BookModel bookModel)
         {
             return bookService.UpdateBook(bookModel);
         }
 
-        [HttpPost("update/{Id}")]
+        [HttpPut("update/{Id}")]
         public ActionResult<BookModel> UpdateBookById(int Id)
         {
             return bookService.UpdateBookById(Id);
         }
 
-        [HttpPost("delete/{Id}")]
+        [HttpDelete("delete/{Id}")]
         public ActionResult DeleteBookById(int Id)
         {
             bookService.DeleteBookById(Id);

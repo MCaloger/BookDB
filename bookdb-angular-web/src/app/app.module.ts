@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDividerModule } from '@angular/material/divider'
 import { MatTabsModule } from '@angular/material/tabs';
+import { EditBookFormComponent } from './edit-book-form/edit-book-form.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     AppComponent,
     BookListComponent,
     AddBookFormComponent,
-    NavigationBarComponent
+    NavigationBarComponent,
+    EditBookFormComponent
   ],
   imports: [
     BrowserModule,

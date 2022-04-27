@@ -7,12 +7,12 @@
 			<span class="book-item-author">By {{ book.author }}</span>
 		</div>
 		<div>
-			<span class="book-item-pages">{{ book.currentPages }} / {{ book.maxPages }} completed.</span>
+			<span *ngIf="book.currentPages != undefined" class="book-item-pages">{{ book.currentPages }} / {{ book.maxPages }} completed.</span>
 		</div>
-		<div>
-			<a routerLink="/book/edit/{{ book.id }}"><button>Edit</button></a>
-			<a routerLink="/book/delete/{{ book.id }}"><button>Delete</button></a>
-		</div>
+    <div>
+      <button routerLink="/book/edit/{{ book.id }}">Edit</button>
+      <button routerLink="/book/delete/{{ book.id }}">Delete</button>
+    </div>
 	</div>
 	<mat-divider></mat-divider>
 </div>
