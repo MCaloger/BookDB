@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { BookService } from '../book.service';
 import { Book } from '../book/book.model';
@@ -11,13 +11,25 @@ import { Book } from '../book/book.model';
 })
 export class BookListComponent implements OnInit {
 
-  books: Observable<Book[]> = new Observable<[]>();
+  books?: Book[] | undefined;
   
   constructor( private bookService: BookService ) { }
 
   ngOnInit(): void {
-    this.books = this.bookService.GetBooks();
+    this.GetBooks();
   }
 
-  
+  GetBooks() {
+    this.bookService.GetBooks().subscribe(
+      data => {
+        this.books = data.slice();
+      }
+    );
+  }
+
+  remove(event: any) {
+    this.bookService.DeleteBook(event.target.id).subscribe(() => {
+      this.GetBooks();
+    });
+  }
 }

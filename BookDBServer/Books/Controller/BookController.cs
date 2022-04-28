@@ -50,6 +50,7 @@ namespace BookDB.Books
         [HttpDelete("delete/{Id}")]
         public ActionResult DeleteBookById(int Id)
         {
+            Console.WriteLine("deleting " + Id);
             bookService.DeleteBookById(Id);
             return Ok();
         }

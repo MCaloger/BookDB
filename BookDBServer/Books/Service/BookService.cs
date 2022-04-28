@@ -53,6 +53,7 @@ namespace BookDB.Books.Service
             if(foundBook != null)
             {
                 dataContext.Books.Remove(foundBook);
+                dataContext.SaveChanges();
             }
             
         }

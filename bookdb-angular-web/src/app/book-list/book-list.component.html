@@ -1,17 +1,17 @@
 <h1>Book List</h1>
-<div class="book-list" *ngFor="let book of books | async">
+<div class="book-list" *ngFor="let book of books">
 	<div class="book-item">
 		
 		<div>
 			<div class="book-item-title">{{ book.title }}</div>
 			<span class="book-item-author">By {{ book.author }}</span>
 		</div>
-		<div>
+		<!-- <div>
 			<span *ngIf="book.currentPages != undefined" class="book-item-pages">{{ book.currentPages }} / {{ book.maxPages }} completed.</span>
-		</div>
+		</div> -->
     <div>
       <button routerLink="/book/edit/{{ book.id }}">Edit</button>
-      <button routerLink="/book/delete/{{ book.id }}">Delete</button>
+      <button [id]="book.id" (click)="remove($event)">Delete</button>
     </div>
 	</div>
 	<mat-divider></mat-divider>

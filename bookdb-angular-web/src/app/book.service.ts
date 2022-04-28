@@ -10,14 +10,12 @@ export class BookService {
 
   constructor(private http: HttpClient) { }
 
-  books: Book[] = [];
-
   GetBooks() {
     return this.http.get<Book[]>("https://localhost:7247/api/v1/book/books");
   }
 
   GetBook(id: number) {
-    return this.http.get<Book>(`https://localhost:7247/api/v1/book/${id}`).pipe();
+    return this.http.get<Book>(`https://localhost:7247/api/v1/book/${id}`);
   }
 
   CreateBook(book?: Book): Observable<Book> {
@@ -30,5 +28,9 @@ export class BookService {
 
   UpdateBook(book?: Book): Observable<Book> {
     return this.http.put<Book>(`https://localhost:7247/api/v1/book/update`, book);
+  }
+
+  DeleteBook(id: number) {
+    return this.http.delete<Book>(`https://localhost:7247/api/v1/book/delete/${id}`);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookService } from '../book.service';
 import { Book } from '../book/book.model';
 
@@ -15,7 +15,7 @@ export class EditBookFormComponent implements OnInit {
   bookTitle = new FormControl('');
   bookAuthor = new FormControl('');
 
-  constructor(private route: ActivatedRoute, private bookService: BookService) { }
+  constructor(private router: Router, private route: ActivatedRoute, private bookService: BookService) { }
 
   ngOnInit(): void {
     const routeParam = this.route.snapshot.paramMap;
@@ -27,8 +27,6 @@ export class EditBookFormComponent implements OnInit {
       this.bookTitle.setValue(this.book?.title)
       this.bookAuthor.setValue(this.book?.author)
     });
-
-    
   }
 
   EditBook() {
@@ -38,7 +36,11 @@ export class EditBookFormComponent implements OnInit {
       author: this.bookAuthor.value
     };
 
-    this.bookService.UpdateBook(updatedBook).subscribe();
+    this.bookService.UpdateBook(updatedBook).subscribe(
+      () => {
+        this.router.navigate(["/"])
+      }
+    );
   }
 
 }
