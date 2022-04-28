@@ -1,10 +1,18 @@
 .nav-bar {
     display: flex;
     align-items: center;
-    height: 50px;
     background: #4CAF50;
 }
 
-.nav-bar > * {
-    padding: 10px;
+.nav-item {
+    color: white;
+    user-select: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 15px;
+}
+
+.nav-item:hover {
+    color: #4CAF50;
+    background: white;
 }

@@ -14,6 +14,18 @@ export class EditBookFormComponent implements OnInit {
 
   bookTitle = new FormControl('');
   bookAuthor = new FormControl('');
+  fileToUpload: string | ArrayBuffer | null | undefined;
+  
+  handleFileUpload(event:any) {
+    const reader = new FileReader();
+
+    reader.readAsDataURL(event.target.files[0]);
+
+    reader.addEventListener('load', () => {
+      console.log(reader.result)
+      this.fileToUpload = reader.result;
+    })
+  }
 
   constructor(private router: Router, private route: ActivatedRoute, private bookService: BookService) { }
 
@@ -26,6 +38,7 @@ export class EditBookFormComponent implements OnInit {
       this.book = data
       this.bookTitle.setValue(this.book?.title)
       this.bookAuthor.setValue(this.book?.author)
+      this.fileToUpload = this.book?.image
     });
   }
 
@@ -33,7 +46,8 @@ export class EditBookFormComponent implements OnInit {
     const updatedBook = <Book>{
       id: this.book?.id,
       title: this.bookTitle.value,
-      author: this.bookAuthor.value
+      author: this.bookAuthor.value,
+      image: this.fileToUpload
     };
 
     this.bookService.UpdateBook(updatedBook).subscribe(

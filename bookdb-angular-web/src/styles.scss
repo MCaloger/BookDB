@@ -37,3 +37,19 @@ $bookdb-angular-web-theme: mat.define-light-theme((
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.preview-img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.form  { 
+  display: table;
+}
+
+.form-row     {
+  display: table-row; 
+}
+.form-label { display: table-cell; }
+.form-input { display: table-cell; }

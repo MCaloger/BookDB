@@ -1,5 +1,22 @@
-Title:
-<input type="text" [formControl]="bookTitle" />
-Author:
-<input type="text" [formControl]="bookAuthor" />
-<button (click)="CreateBook()">Submit</button>
+<h1>Add Book</h1>
+<div class="form-row">
+    <label for="title">Title:</label>
+    <input name="title" id="title" type="text" [formControl]="bookTitle" />
+</div>
+<div>
+    <label for="author">Author:</label>
+    <input name="author" id="author" type="text" [formControl]="bookAuthor" />
+</div>
+<div class="form-row">
+    <label for="upload">Upload File:</label>
+    <input name="upload" id="upload" type="file" (change)="handleFileUpload($event)" accept="image/png,image/jpeg" />
+    
+
+</div>
+<div class="form-row">
+    <img *ngIf="fileToUpload != undefined || fileToUpload != null" class="preview-img" [src]="fileToUpload" alt="Upload file preview"/>
+</div>
+<div class="form-row">
+    <button (click)="CreateBook()">Submit</button>
+</div>
+

@@ -31,7 +31,6 @@ namespace BookDB.Books
         [HttpPost("create")]
         public ActionResult<BookModel> CreateBook(BookModel bookModel)
         {
-            Console.WriteLine(bookModel);
             return bookService.CreateBook(bookModel);
         }
 
