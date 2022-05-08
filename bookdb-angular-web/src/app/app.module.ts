@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatDividerModule } from '@angular/material/divider'
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 import { EditBookFormComponent } from './edit-book-form/edit-book-form.component';
 
 
@@ -31,7 +32,8 @@ import { EditBookFormComponent } from './edit-book-form/edit-book-form.component
     ReactiveFormsModule,
     BrowserAnimationsModule,
     MatDividerModule,
-    MatTabsModule
+    MatTabsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,4 +1,8 @@
-<h1>Edit {{ bookTitle.value }}</h1>
+<h1>Edit <span class="italic">{{ bookTitle.value }}</span></h1>
+<div class="form-row">
+    <img *ngIf="fileToUpload != undefined || fileToUpload != null" class="preview-img" [src]="fileToUpload" alt="Upload file preview"/>
+</div>
+
 <div class="form">
     <div class="form-row">
         <label class="form-label" for="title">Title:</label>
@@ -11,14 +15,12 @@
     <div class="form-row">
         <label class="form-label" for="upload">Upload File:</label>
         <input class="form-input" name="upload" id="upload" type="file" (change)="handleFileUpload($event)" accept="image/png,image/jpeg" />
-        
+    </div>    
     
-    </div>
+    
+    
     <div class="form-row">
-        <img class="form-input" *ngIf="fileToUpload != undefined || fileToUpload != null" class="preview-img" [src]="fileToUpload" alt="Upload file preview"/>
-    </div>
-    <div class="form-row">
-        <button (click)="EditBook()">Submit</button>
+        <button class="btn drop-shadow-interactive" (click)="EditBook()">Submit</button>
     </div>
 </div>
 

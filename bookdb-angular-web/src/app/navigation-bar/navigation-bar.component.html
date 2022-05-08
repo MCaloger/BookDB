@@ -1,4 +1,7 @@
 <nav class="nav-bar">
-  <div class="nav-item" routerLink="/">Home</div>
-  <div class="nav-item" routerLink="/add">Add</div>
+  <div class="nav-item" routerLink="" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">
+    <!-- <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon> -->
+    <span>Home</span>
+  </div>
+  <div class="nav-item" routerLink="add" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: true}">Add</div>
 </nav>

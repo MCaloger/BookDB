@@ -34,17 +34,20 @@ var app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(s => s.SwaggerEndpoint("/swagger/v1/swagger.json", "Swagger API"));
+    app.UseCors("DevCorsPolicy");
 }
 
 app.UseStatusCodePages();
+
+app.UseExceptionHandler("/error");
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapControllers();
+app.UseStaticFiles();
 
-app.UseCors("DevCorsPolicy");
+app.MapControllers();
 
 app.Run();

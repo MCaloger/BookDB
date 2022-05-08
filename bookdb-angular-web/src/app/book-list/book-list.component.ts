@@ -22,7 +22,7 @@ export class BookListComponent implements OnInit {
   GetBooks() {
     this.bookService.GetBooks().subscribe(
       data => {
-        this.books = data.slice();
+        this.books = data;
       }
     );
   }

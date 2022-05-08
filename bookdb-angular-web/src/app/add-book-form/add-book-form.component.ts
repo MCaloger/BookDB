@@ -16,12 +16,12 @@ export class AddBookFormComponent implements OnInit {
   fileToUpload: string | ArrayBuffer | null | undefined;
   
   handleFileUpload(event:any) {
+    const file = event.target.files[0]
     const reader = new FileReader();
 
-    reader.readAsDataURL(event.target.files[0]);
+    reader.readAsDataURL(file);
 
     reader.addEventListener('load', () => {
-      console.log(reader.result)
       this.fileToUpload = reader.result;
     })
   }
