@@ -1,61 +1,48 @@
-﻿using BookDB.Data;
+﻿using BookDBServer.Books;
 
 namespace BookDB.Books.Service
 {
     public class BookService
     {
-        private readonly DataContext dataContext;
-        public BookService(DataContext dataContext)
+        private readonly BookRepository bookRepository;
+        public BookService(BookRepository bookRepository)
         {
-            this.dataContext = dataContext;
+            this.bookRepository = bookRepository;
         }
 
         public BookModel GetBook(int Id)
         {
-            return dataContext.Books.Where<BookModel>(Book => Book.Id == Id).FirstOrDefault();
+            return bookRepository.GetBook(Id);
         }
 
         public List<BookModel> GetAllBooks()
         {
-            return dataContext.Books.ToList();
+            return bookRepository.GetAllBooks();
         }
 
         public BookModel CreateBook(BookModel bookModel)
         {
-            dataContext.Books.Add(bookModel);
-            dataContext.SaveChanges();
-            return bookModel;
+            return bookRepository.CreateBook(bookModel);
         }
 
         public BookModel UpdateBook(BookModel bookModel)
         {
-            dataContext.Books.Update(bookModel);
-            dataContext.SaveChanges();
-            return bookModel;
+            return bookRepository.UpdateBook(bookModel);
         }
 
-        public BookModel UpdateBookById(int Id)
+        public BookModel UpdateBookById(int Id, BookModel bookModel)
         {
-            BookModel? foundBook = dataContext.Books.FirstOrDefault(book => book.Id == Id);
-            dataContext.Books.Update(foundBook);
-            dataContext.SaveChanges();
-            return foundBook;
+            return bookRepository.UpdateBookById(Id, bookModel);
         }
 
         public void DeleteBook(BookModel bookModel)
         {
-            dataContext.Books.Remove(bookModel);
+            bookRepository.DeleteBook(bookModel);
         }
 
         public void DeleteBookById(int Id)
         {
-            BookModel? foundBook = dataContext.Books.FirstOrDefault(book => book.Id == Id);
-            if(foundBook != null)
-            {
-                dataContext.Books.Remove(foundBook);
-                dataContext.SaveChanges();
-            }
-            
+            bookRepository.DeleteBookById(Id);
         }
     }
 }

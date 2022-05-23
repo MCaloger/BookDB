@@ -40,12 +40,6 @@ namespace BookDB.Books
             return bookService.UpdateBook(bookModel);
         }
 
-        [HttpPut("update/{Id}")]
-        public ActionResult<BookModel> UpdateBookById(int Id)
-        {
-            return bookService.UpdateBookById(Id);
-        }
-
         [HttpDelete("delete/{Id}")]
         public ActionResult DeleteBookById(int Id)
         {
